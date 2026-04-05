@@ -56,7 +56,14 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+int _write(int file, char *ptr, int len){
+	HAL_StatusTypeDef hstatus;
+	hstatus = HAL_UART_Transmit(&huart2,(uint8_t *)ptr, len, HAL_MAX_DELAY);
+	if(hstatus==HAL_OK)
+		return len;
+	else
+		return -1;
+}
 /* USER CODE END 0 */
 
 /**
@@ -90,7 +97,8 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  printf("Hello World!");
+  printf("Hello World 2!");
   /* USER CODE END 2 */
 
   /* Infinite loop */
