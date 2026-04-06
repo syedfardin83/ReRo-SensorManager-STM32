@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -97,8 +97,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  printf("Hello World!");
-  printf("Hello World 2!");
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -106,7 +105,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    
+    printf("\nHello World!");
+    HAL_Delay(100);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

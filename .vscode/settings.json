@@ -1,0 +1,8 @@
+{
+    "cmake.sourceDirectory": "/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/VL6180X_ToF_Sensor",
+    "cmake.cmakePath": "cube-cmake",
+    "cmake.configureArgs": [
+        "-DCMAKE_COMMAND=cube-cmake"
+    ],
+    // "cmake.cmakePath": "/usr/bin/cmake"
+}
