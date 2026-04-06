@@ -1,0 +1,10 @@
+#include "vl6180x.h"
+
+void vl6180x_attach(VL6180X_t* obj,I2C_HandleTypeDef* i2c_handler ,uint8_t addr){
+    obj->hi2c=i2c_handler;
+    obj->address=addr;
+}
+
+void vl6180x_init(VL6180X_t* obj){
+    
+}
