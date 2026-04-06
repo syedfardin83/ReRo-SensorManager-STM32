@@ -37,6 +37,20 @@ add_executable(${CMAKE_PROJECT_NAME})
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
 
+# Add VL6180X library
+add_subdirectory(VL6180X)
+
+# Later, link it to your main executable:
+target_link_libraries(${CMAKE_PROJECT_NAME}
+    stm32cubemx
+    vl6180x    # ← Add this
+)
+
+# And add the include path (optional if using PRIVATE in library):
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    VL6180X/Inc
+)
+
 # Link directories setup
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined library search paths

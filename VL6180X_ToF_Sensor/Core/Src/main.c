@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
+#include "vl6180x.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -105,7 +106,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    printf("\nHello World!");
+    // printf("\nHello World 100!");
+    print_hello();
     HAL_Delay(100);
     /* USER CODE BEGIN 3 */
   }
