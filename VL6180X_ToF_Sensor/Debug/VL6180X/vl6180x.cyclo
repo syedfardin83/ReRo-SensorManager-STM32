@@ -1,0 +1,4 @@
+../VL6180X/vl6180x.c:3:6:vl6180x_attach	1
+../VL6180X/vl6180x.c:10:6:vl6180x_TurnOnCE	1
+../VL6180X/vl6180x.c:15:6:vl6180x_init	1
+../VL6180X/vl6180x.c:19:16:vl6180x_CheckAlive	2
