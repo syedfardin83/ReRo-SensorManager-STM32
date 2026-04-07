@@ -1,25 +1,11 @@
 #include "vl6180x.h"
 
-uint8_t vl6180x_read8(VL6180X_t* obj, uint16_t reg)
-{
-    uint8_t value;
-
-    HAL_I2C_Mem_Read(obj->hi2c, obj->address,
-                     reg, I2C_MEMADD_SIZE_16BIT,
-                     &value, 1, 100);
-
-    return value;
-}
-
-uint16_t vl6180x_read16(VL6180X_t* obj, uint16_t reg)
-{
-    uint8_t data[2];
-
-    HAL_I2C_Mem_Read(obj->hi2c, obj->address,
-                     reg, I2C_MEMADD_SIZE_16BIT,
-                     data, 2, 100);
-
-    return (data[0] << 8) | data[1];
+uint16_t vl6180x_read(VL6180X_t* obj,uint16_t reg, uint8_t readNum){
+	uint8_t value=0;
+	if(readNum==1){
+		HAL_I2C_Mem_Read(obj->hi2c,obj->address,reg,I2C_MEMADD_SIZE_16BIT,&value,1,100);
+	}
+	return value;
 }
 
 
@@ -45,10 +31,6 @@ void vl6180x_TurnOnCE(VL6180X_t* obj){
 
 
 void vl6180x_init(VL6180X_t* obj){
-
-	if(vl6180x_read8(obj,VL6180X_SYSTEM_FRESH_OUT_OF_RESET)==1){
-
-	}
 
 }
 

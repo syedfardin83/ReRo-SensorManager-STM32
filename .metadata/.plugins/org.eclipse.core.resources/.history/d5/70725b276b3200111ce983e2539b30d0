@@ -41,5 +41,5 @@ VL6180X_Status vl6180x_CheckAlive(VL6180X_t*);
 void vl6180x_init(VL6180X_t*);
 
 VL6180X_Status vl6180x_write8bit(VL6180X_t*,uint16_t,uint8_t);
-uint8_t vl6180x_read8(VL6180X_t*, uint16_t);
-uint16_t vl6180x_read16(VL6180X_t*, uint16_t);
+uint8_t VL6180X_read8(VL6180X_t*, uint16_t);
+uint16_t VL6180X_read16(VL6180X_t*, uint16_t);

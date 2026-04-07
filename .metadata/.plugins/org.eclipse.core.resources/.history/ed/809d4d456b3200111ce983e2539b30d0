@@ -46,9 +46,7 @@ void vl6180x_TurnOnCE(VL6180X_t* obj){
 
 void vl6180x_init(VL6180X_t* obj){
 
-	if(vl6180x_read8(obj,VL6180X_SYSTEM_FRESH_OUT_OF_RESET)==1){
-
-	}
+	if(vl6180x_read8())
 
 }
 

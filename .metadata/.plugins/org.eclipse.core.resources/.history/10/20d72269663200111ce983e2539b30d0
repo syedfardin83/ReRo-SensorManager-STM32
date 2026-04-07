@@ -12,14 +12,6 @@
 #define VL6180X_SYSRANGE_VHV_REPEAT_RATE              0x031
 #define VL6180X_SYSALS_INTEGRATION_PERIOD             0x040
 #define VL6180X_SYSRANGE_VHV_RECALIBRATE              0x02E
-#define VL6180X_SYSRANGE_INTERMEASUREMENT_PERIOD      0x01B
-#define VL6180X_SYSALS_INTERMEASUREMENT_PERIOD        0x03E
-#define VL6180X_SYSTEM_INTERRUPT_CONFIG_GPIO          0x014
-#define VL6180X_SYSRANGE_MAX_CONVERGENCE_TIME         0x01C
-#define VL6180X_INTERLEAVED_MODE_ENABLE               0x2A3
-#define VL6180X_SYSTEM_MODE_GPIO1                     0X011
-#define VL6180X_SYSTEM_FRESH_OUT_OF_RESET             0x016
-
 
 typedef enum{
 	VL6180X_ERROR=0,
@@ -39,7 +31,3 @@ void vl6180x_attach(VL6180X_t*,I2C_HandleTypeDef*,uint8_t,GPIO_TypeDef*,uint16_t
 void vl6180x_TurnOnCE(VL6180X_t*);
 VL6180X_Status vl6180x_CheckAlive(VL6180X_t*);
 void vl6180x_init(VL6180X_t*);
-
-VL6180X_Status vl6180x_write8bit(VL6180X_t*,uint16_t,uint8_t);
-uint8_t vl6180x_read8(VL6180X_t*, uint16_t);
-uint16_t vl6180x_read16(VL6180X_t*, uint16_t);
