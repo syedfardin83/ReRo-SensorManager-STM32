@@ -1,0 +1,64 @@
+#include "vl6180x.h"
+
+uint8_t vl6180x_read8(VL6180X_t* obj, uint16_t reg)
+{
+    uint8_t value;
+
+    HAL_I2C_Mem_Read(obj->hi2c, obj->address,
+                     reg, I2C_MEMADD_SIZE_16BIT,
+                     &value, 1, 100);
+
+    return value;
+}
+
+uint16_t vl6180x_read16(VL6180X_t* obj, uint16_t reg)
+{
+    uint8_t data[2];
+
+    HAL_I2C_Mem_Read(obj->hi2c, obj->address,
+                     reg, I2C_MEMADD_SIZE_16BIT,
+                     data, 2, 100);
+
+    return (data[0] << 8) | data[1];
+}
+
+
+VL6180X_Status vl6180x_write8bit(VL6180X_t* obj,uint16_t reg,uint8_t value){
+	if(HAL_I2C_Mem_Write(obj->hi2c,obj->address,reg,I2C_MEMADD_SIZE_16BIT,&value,1,100)==HAL_OK){
+		return VL6180X_OK;
+	}else{
+		return VL6180X_ERROR;
+	}
+}
+
+
+void vl6180x_attach(VL6180X_t* obj,I2C_HandleTypeDef* i2c_handler ,uint8_t addr,GPIO_TypeDef* ce_gpio_port,uint16_t ce_gpio_pin){
+    obj->hi2c=i2c_handler;
+    obj->address=addr;
+    obj->CE_gpio_port=ce_gpio_port;
+    obj->CE_gpio_pin=ce_gpio_pin;
+}
+
+void vl6180x_TurnOnCE(VL6180X_t* obj){
+	  HAL_GPIO_WritePin(obj->CE_gpio_port,obj->CE_gpio_pin,GPIO_PIN_SET);
+}
+
+
+void vl6180x_init(VL6180X_t* obj){
+
+	if(vl6180x_read8(obj,VL6180X_SYSTEM_FRESH_OUT_OF_RESET)==1){
+
+	}
+
+}
+
+VL6180X_Status vl6180x_CheckAlive(VL6180X_t* obj){
+	if (HAL_I2C_IsDeviceReady(obj->hi2c, obj->address << 1, 1, 10) == HAL_OK)
+		      {
+//		          printf("\nSensor Found!");
+		return VL6180X_OK;
+		      }else{
+//		    	  printf("\nSensor not found!");
+		    	  return VL6180X_ERROR;
+		      }
+}

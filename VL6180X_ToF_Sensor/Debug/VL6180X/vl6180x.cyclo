@@ -1,4 +1,8 @@
-../VL6180X/vl6180x.c:3:6:vl6180x_attach	1
-../VL6180X/vl6180x.c:10:6:vl6180x_TurnOnCE	1
-../VL6180X/vl6180x.c:15:6:vl6180x_init	1
-../VL6180X/vl6180x.c:19:16:vl6180x_CheckAlive	2
+../VL6180X/vl6180x.c:3:9:vl6180x_read8	2
+../VL6180X/vl6180x.c:18:10:vl6180x_read16	1
+../VL6180X/vl6180x.c:30:16:vl6180x_write8bit	2
+../VL6180X/vl6180x.c:42:6:vl6180x_attach	1
+../VL6180X/vl6180x.c:49:6:vl6180x_TurnOnCE	1
+../VL6180X/vl6180x.c:54:6:vl6180x_init	2
+../VL6180X/vl6180x.c:108:9:vl6180x_RangeGetMeasurement	1
+../VL6180X/vl6180x.c:114:16:vl6180x_CheckAlive	2

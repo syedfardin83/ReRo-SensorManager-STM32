@@ -105,6 +105,14 @@ int main(void)
   /* USER CODE BEGIN 2 */
   VL6180X_t sensor1;
   vl6180x_attach(&sensor1,&hi2c1,VL6180X_DEFAULT_ADDR,GPIOB,GPIO_PIN_13);
+  printf("\nTurning on CE pin now...");
+  vl6180x_TurnOnCE(&sensor1);
+//  vl6180x_TurnOnCE(&sensor1);
+  if(vl6180x_CheckAlive(&sensor1)==VL6180X_OK)printf("\nSensor alive!");
+  else printf("\nSensor not found!");
+  vl6180x_init(&sensor1);
+  uint8_t distance=0;
+  uint8_t state=0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -116,16 +124,46 @@ int main(void)
 //	printf("")
 //	print_hello();
 //	HAL_Delay(500);
-	  printf("\nTurning on CE pin now...");
-	  vl6180x_TurnOnCE(&sensor1);
-	  printf("\nSearching for ToF Sensor...");
-	      if (vl6180x_CheckAlive(&sensor1)==VL6180X_OK)
-	      {
-	          printf("\nSensor Found!");
-	      }else{
-	    	  printf("\nSensor not found!");
-	      }
-	  HAL_Delay(1000);
+
+//	  printf("\nSearching for ToF Sensor...");
+//	      if (vl6180x_CheckAlive(&sensor1)==VL6180X_OK)
+//	      {
+//	          printf("\nSensor Found!");
+//	      }else{
+//	    	  printf("\nSensor not found!");
+//	      }
+
+//	  printf("\nWriting data...");
+//	  if(vl6180x_write8bit(&sensor1,0x0207, 0x01)==VL6180X_OK){
+//		  printf("\nWrite success!");
+//	  }else{
+//		  printf("\nWrite fail");
+//	  }
+
+//	  printf("\nReading Reset state...");
+//	  if(HAL_I2C_Mem_Read(sensor1.hi2c, sensor1.address<<1,
+//			  VL6180X_SYSTEM_FRESH_OUT_OF_RESET, I2C_MEMADD_SIZE_16BIT,
+//	                       &state, 1, 100)==HAL_OK){
+//		  printf("\nRead success, Reset State: %d",state);
+//	  }else{
+//		  printf("\nRead failed!");
+//	  }
+//	  distance=vl6180x_RangeGetMeasurement(&sensor1);
+//	  if(HAL_I2C_Mem_Read(&hi2c1,VL6180X_DEFAULT_ADDR<<1,
+//			  VL6180X_RESULT_RANGE_VAL, I2C_MEMADD_SIZE_16BIT,
+//	                       &distance, 1, 100)==HAL_OK){
+//	      	printf("\nRead Success!");
+//	      }else{
+//	      	printf("\nRead failure!");
+//	      }
+//	  printf("\nDistance: %d",distance);
+
+
+//	  HAL_Delay(300);
+
+	distance=vl6180x_RangeGetMeasurement(&sensor1);
+	printf("\nDistance: %d",distance);
+	HAL_Delay(50);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

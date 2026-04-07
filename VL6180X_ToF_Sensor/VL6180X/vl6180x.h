@@ -20,6 +20,12 @@
 #define VL6180X_SYSTEM_MODE_GPIO1                     0X011
 #define VL6180X_SYSTEM_FRESH_OUT_OF_RESET             0x016
 
+#define VL6180X_RESULT_RANGE_STATUS                   0x04D
+#define VL6180X_RESULT_RANGE_VAL                      0x062
+#define VL6180X_SYSRANGE_START                        0x018
+
+
+
 
 typedef enum{
 	VL6180X_ERROR=0,
@@ -39,6 +45,8 @@ void vl6180x_attach(VL6180X_t*,I2C_HandleTypeDef*,uint8_t,GPIO_TypeDef*,uint16_t
 void vl6180x_TurnOnCE(VL6180X_t*);
 VL6180X_Status vl6180x_CheckAlive(VL6180X_t*);
 void vl6180x_init(VL6180X_t*);
+
+uint8_t vl6180x_RangeGetMeasurement(VL6180X_t*);
 
 VL6180X_Status vl6180x_write8bit(VL6180X_t*,uint16_t,uint8_t);
 uint8_t vl6180x_read8(VL6180X_t*, uint16_t);

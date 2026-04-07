@@ -4,9 +4,13 @@ uint8_t vl6180x_read8(VL6180X_t* obj, uint16_t reg)
 {
     uint8_t value;
 
-    HAL_I2C_Mem_Read(obj->hi2c, obj->address,
+    if(HAL_I2C_Mem_Read(obj->hi2c, obj->address<<1,
                      reg, I2C_MEMADD_SIZE_16BIT,
-                     &value, 1, 100);
+                     &value, 1, 100)==HAL_OK){
+//    	printf("\nRead Success!");
+    }else{
+    	printf("\nRead failure!");
+    }
 
     return value;
 }
@@ -15,7 +19,7 @@ uint16_t vl6180x_read16(VL6180X_t* obj, uint16_t reg)
 {
     uint8_t data[2];
 
-    HAL_I2C_Mem_Read(obj->hi2c, obj->address,
+    HAL_I2C_Mem_Read(obj->hi2c, obj->address<<1,
                      reg, I2C_MEMADD_SIZE_16BIT,
                      data, 2, 100);
 
@@ -24,9 +28,12 @@ uint16_t vl6180x_read16(VL6180X_t* obj, uint16_t reg)
 
 
 VL6180X_Status vl6180x_write8bit(VL6180X_t* obj,uint16_t reg,uint8_t value){
-	if(HAL_I2C_Mem_Write(obj->hi2c,obj->address,reg,I2C_MEMADD_SIZE_16BIT,&value,1,100)==HAL_OK){
+	if(HAL_I2C_Mem_Write(obj->hi2c,obj->address<<1,reg,I2C_MEMADD_SIZE_16BIT,&value,1,100)==HAL_OK){
+//		printf("\nWrite Success");
 		return VL6180X_OK;
 	}else{
+		printf("\nWrite Failure");
+
 		return VL6180X_ERROR;
 	}
 }
@@ -46,10 +53,62 @@ void vl6180x_TurnOnCE(VL6180X_t* obj){
 
 void vl6180x_init(VL6180X_t* obj){
 
+	printf("\nInitialization sequence started...");
+
 	if(vl6180x_read8(obj,VL6180X_SYSTEM_FRESH_OUT_OF_RESET)==1){
-
+		printf("\nFirst init...");
+	    vl6180x_write8bit(obj,0x0207, 0x01);
+	    vl6180x_write8bit(obj,0x0208, 0x01);
+	    vl6180x_write8bit(obj,0x0096, 0x00);
+	    vl6180x_write8bit(obj,0x0097, 0xfd);
+	    vl6180x_write8bit(obj,0x00e3, 0x00);
+	    vl6180x_write8bit(obj,0x00e4, 0x04);
+	    vl6180x_write8bit(obj,0x00e5, 0x02);
+	    vl6180x_write8bit(obj,0x00e6, 0x01);
+	    vl6180x_write8bit(obj,0x00e7, 0x03);
+	    vl6180x_write8bit(obj,0x00f5, 0x02);
+	    vl6180x_write8bit(obj,0x00d9, 0x05);
+	    vl6180x_write8bit(obj,0x00db, 0xce);
+	    vl6180x_write8bit(obj,0x00dc, 0x03);
+	    vl6180x_write8bit(obj,0x00dd, 0xf8);
+	    vl6180x_write8bit(obj,0x009f, 0x00);
+	    vl6180x_write8bit(obj,0x00a3, 0x3c);
+	    vl6180x_write8bit(obj,0x00b7, 0x00);
+	    vl6180x_write8bit(obj,0x00bb, 0x3c);
+	    vl6180x_write8bit(obj,0x00b2, 0x09);
+	    vl6180x_write8bit(obj,0x00ca, 0x09);
+	    vl6180x_write8bit(obj,0x0198, 0x01);
+	    vl6180x_write8bit(obj,0x01b0, 0x17);
+	    vl6180x_write8bit(obj,0x01ad, 0x00);
+	    vl6180x_write8bit(obj,0x00ff, 0x05);
+	    vl6180x_write8bit(obj,0x0100, 0x05);
+	    vl6180x_write8bit(obj,0x0199, 0x05);
+	    vl6180x_write8bit(obj,0x01a6, 0x1b);
+	    vl6180x_write8bit(obj,0x01ac, 0x3e);
+	    vl6180x_write8bit(obj,0x01a7, 0x1f);
+	    vl6180x_write8bit(obj,0x0030, 0x00);
 	}
+	  vl6180x_write8bit(obj,VL6180X_READOUT_AVERAGING_SAMPLE_PERIOD, 0x30);
+	  vl6180x_write8bit(obj,VL6180X_SYSALS_ANALOGUE_GAIN, 0x46);
+	  vl6180x_write8bit(obj,VL6180X_SYSRANGE_VHV_REPEAT_RATE, 0xFF);
+	  vl6180x_write8bit(obj,VL6180X_SYSALS_INTEGRATION_PERIOD, 0x63);
+	  vl6180x_write8bit(obj,VL6180X_SYSRANGE_VHV_RECALIBRATE, 0x01);
+	  vl6180x_write8bit(obj,VL6180X_SYSRANGE_INTERMEASUREMENT_PERIOD, 0x09);
+	  vl6180x_write8bit(obj,VL6180X_SYSALS_INTERMEASUREMENT_PERIOD, 0x31);
+	  vl6180x_write8bit(obj,VL6180X_SYSTEM_INTERRUPT_CONFIG_GPIO, 0x00);
+	  vl6180x_write8bit(obj,VL6180X_SYSRANGE_MAX_CONVERGENCE_TIME, 0x31);
+	  vl6180x_write8bit(obj,VL6180X_INTERLEAVED_MODE_ENABLE, 0);
+	  vl6180x_write8bit(obj,VL6180X_SYSTEM_MODE_GPIO1,0x20);
+	  vl6180x_write8bit(obj,VL6180X_SYSTEM_FRESH_OUT_OF_RESET,0);
 
+	  vl6180x_write8bit(obj,VL6180X_SYSRANGE_START,1);
+
+}
+
+uint8_t vl6180x_RangeGetMeasurement(VL6180X_t* obj){
+	  vl6180x_write8bit(obj,VL6180X_SYSRANGE_START,1);
+	  uint8_t value = vl6180x_read8(obj,VL6180X_RESULT_RANGE_VAL);
+	  return value;
 }
 
 VL6180X_Status vl6180x_CheckAlive(VL6180X_t* obj){
