@@ -803,3 +803,68 @@ Finished building: default.size.stdout
  
 Finished building: VL6180X_ToF_Sensor.list
  
+17:18:49 **** Incremental Build of configuration Debug for project VL6180X_ToF_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../VL6180X/vl6180x.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../VL6180X -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"VL6180X/vl6180x.d" -MT"VL6180X/vl6180x.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "VL6180X/vl6180x.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../VL6180X -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../VL6180X/vl6180x.c:108:6: error: conflicting types for 'vl6180x_SetAddr'; have 'void(VL6180X_t,  uint8_t)' {aka 'void(VL6180X_t,  unsigned char)'}
+  108 | void vl6180x_SetAddr(VL6180X_t obj,uint8_t new_addr){
+      |      ^~~~~~~~~~~~~~~
+In file included from ../VL6180X/vl6180x.c:1:
+../VL6180X/vl6180x.h:52:6: note: previous declaration of 'vl6180x_SetAddr' with type 'void(VL6180X_t *, uint8_t)' {aka 'void(VL6180X_t *, unsigned char)'}
+   52 | void vl6180x_SetAddr(VL6180X_t*,uint8_t);
+      |      ^~~~~~~~~~~~~~~
+../VL6180X/vl6180x.c: In function 'vl6180x_SetAddr':
+../VL6180X/vl6180x.c:109:27: error: incompatible type for argument 1 of 'vl6180x_write8bit'
+  109 |         vl6180x_write8bit(obj,VL6180X_I2C_SLAVE_DEVICE_ADDRESS,new_addr);
+      |                           ^~~
+      |                           |
+      |                           VL6180X_t
+../VL6180X/vl6180x.c:30:45: note: expected 'VL6180X_t *' but argument is of type 'VL6180X_t'
+   30 | VL6180X_Status vl6180x_write8bit(VL6180X_t* obj,uint16_t reg,uint8_t value){
+      |                                  ~~~~~~~~~~~^~~
+../VL6180X/vl6180x.c:110:60: error: invalid type argument of '->' (have 'VL6180X_t')
+  110 |         printf("\nChanged sensor address from %d to %d",obj->address,new_addr);
+      |                                                            ^~
+../VL6180X/vl6180x.c:111:12: error: invalid type argument of '->' (have 'VL6180X_t')
+  111 |         obj->address=new_addr;
+      |            ^~
+make: *** [VL6180X/subdir.mk:19: VL6180X/vl6180x.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:115:11: warning: unused variable 'state' [-Wunused-variable]
+  115 |   uint8_t state=0;
+      |           ^~~~~
+"make -j18 all" terminated with exit code 2. Build might be incomplete.
+17:19:19 **** Incremental Build of configuration Debug for project VL6180X_ToF_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../VL6180X/vl6180x.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../VL6180X -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"VL6180X/vl6180x.d" -MT"VL6180X/vl6180x.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "VL6180X/vl6180x.o"
+arm-none-eabi-gcc -o "VL6180X_ToF_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/VL6180X_ToF_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VL6180X_ToF_Sensor.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: VL6180X_ToF_Sensor.elf
+ 
+arm-none-eabi-size  VL6180X_ToF_Sensor.elf 
+arm-none-eabi-objdump -h -S VL6180X_ToF_Sensor.elf  > "VL6180X_ToF_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  18876	    104	   2064	  21044	   5234	VL6180X_ToF_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: VL6180X_ToF_Sensor.list
+ 
+17:22:53 **** Incremental Build of configuration Debug for project VL6180X_ToF_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../VL6180X -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:116:11: warning: unused variable 'state' [-Wunused-variable]
+  116 |   uint8_t state=0;
+      |           ^~~~~
+arm-none-eabi-gcc -o "VL6180X_ToF_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/VL6180X_ToF_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VL6180X_ToF_Sensor.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: VL6180X_ToF_Sensor.elf
+ 
+arm-none-eabi-size  VL6180X_ToF_Sensor.elf 
+arm-none-eabi-objdump -h -S VL6180X_ToF_Sensor.elf  > "VL6180X_ToF_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  18944	    104	   2064	  21112	   5278	VL6180X_ToF_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: VL6180X_ToF_Sensor.list
+ 

@@ -105,7 +105,7 @@ void vl6180x_init(VL6180X_t* obj){
 
 }
 
-void vl6180x_SetAddr(VL6180X_t* obj,uint8_t new_addr){
+void vl6180x_SetAddr(VL6180X_t obj,uint8_t new_addr){
 	vl6180x_write8bit(obj,VL6180X_I2C_SLAVE_DEVICE_ADDRESS,new_addr);
 	printf("\nChanged sensor address from %d to %d",obj->address,new_addr);
 	obj->address=new_addr;

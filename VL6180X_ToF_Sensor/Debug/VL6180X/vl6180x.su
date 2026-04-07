@@ -4,5 +4,6 @@
 ../VL6180X/vl6180x.c:42:6:vl6180x_attach	24	static
 ../VL6180X/vl6180x.c:49:6:vl6180x_TurnOnCE	16	static
 ../VL6180X/vl6180x.c:54:6:vl6180x_init	16	static
-../VL6180X/vl6180x.c:108:9:vl6180x_RangeGetMeasurement	24	static
-../VL6180X/vl6180x.c:114:16:vl6180x_CheckAlive	16	static
+../VL6180X/vl6180x.c:108:6:vl6180x_SetAddr	16	static
+../VL6180X/vl6180x.c:117:9:vl6180x_RangeGetMeasurement	24	static
+../VL6180X/vl6180x.c:123:16:vl6180x_CheckAlive	16	static

@@ -1,9 +1,9 @@
-17:09:52 **** Incremental Build of configuration Debug for project VL6180X_ToF_Sensor ****
+17:22:53 **** Incremental Build of configuration Debug for project VL6180X_ToF_Sensor ****
 make -j18 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../VL6180X -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:115:11: warning: unused variable 'state' [-Wunused-variable]
-  115 |   uint8_t state=0;
+../Core/Src/main.c:116:11: warning: unused variable 'state' [-Wunused-variable]
+  116 |   uint8_t state=0;
       |           ^~~~~
 arm-none-eabi-gcc -o "VL6180X_ToF_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/VL6180X_ToF_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VL6180X_ToF_Sensor.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: VL6180X_ToF_Sensor.elf
@@ -11,11 +11,11 @@ Finished building target: VL6180X_ToF_Sensor.elf
 arm-none-eabi-size  VL6180X_ToF_Sensor.elf 
 arm-none-eabi-objdump -h -S VL6180X_ToF_Sensor.elf  > "VL6180X_ToF_Sensor.list"
    text	   data	    bss	    dec	    hex	filename
-  18796	    104	   2064	  20964	   51e4	VL6180X_ToF_Sensor.elf
+  18944	    104	   2064	  21112	   5278	VL6180X_ToF_Sensor.elf
 Finished building: default.size.stdout
  
 Finished building: VL6180X_ToF_Sensor.list
  
 
-17:09:52 Build Finished. 0 errors, 1 warnings. (took 227ms)
+17:22:53 Build Finished. 0 errors, 1 warnings. (took 229ms)
 

@@ -23,8 +23,6 @@
 #define VL6180X_RESULT_RANGE_STATUS                   0x04D
 #define VL6180X_RESULT_RANGE_VAL                      0x062
 #define VL6180X_SYSRANGE_START                        0x018
-#define VL6180X_I2C_SLAVE_DEVICE_ADDRESS              0x212
-
 
 
 
@@ -49,7 +47,6 @@ VL6180X_Status vl6180x_CheckAlive(VL6180X_t*);
 void vl6180x_init(VL6180X_t*);
 
 uint8_t vl6180x_RangeGetMeasurement(VL6180X_t*);
-void vl6180x_SetAddr(VL6180X_t*,uint8_t);
 
 VL6180X_Status vl6180x_write8bit(VL6180X_t*,uint16_t,uint8_t);
 uint8_t vl6180x_read8(VL6180X_t*, uint16_t);
