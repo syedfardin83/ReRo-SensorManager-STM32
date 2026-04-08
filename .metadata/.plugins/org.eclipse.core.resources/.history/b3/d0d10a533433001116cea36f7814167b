@@ -1,0 +1,6 @@
+#include "bmx160.h"
+
+void bmx160_attach(BMX160_t* obj,I2C_HandleTypeDef* hi2c){
+	obj->hi2c=hi2c;
+	obj->address=BMX160_DEFAULT_ADDR;
+}

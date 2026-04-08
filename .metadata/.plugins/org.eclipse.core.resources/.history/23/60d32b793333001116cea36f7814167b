@@ -1,0 +1,5 @@
+#include "bmx160.h"
+
+void print_hello(void){
+	printf("\nHello, World!");
+}

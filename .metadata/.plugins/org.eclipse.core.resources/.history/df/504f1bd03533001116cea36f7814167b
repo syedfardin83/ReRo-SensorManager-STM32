@@ -1,0 +1,31 @@
+#include "bmx160.h"
+
+uint8_t bmx160_read8(BMX160_t* obj, uint16_t reg)
+{
+    uint8_t value;
+    printf("\nReading at address: %d",obj->address);
+    if(HAL_I2C_Mem_Read(obj->hi2c, obj->address<<1,
+                     reg, I2C_MEMADD_SIZE_16BIT,
+                     &value, 1, 100)==HAL_OK){
+    	printf("\nRead Success!");
+    }else{
+    	printf("\nRead failure!");
+    }
+
+    return value;
+}
+
+void bmx160_attach(BMX160_t* obj,I2C_HandleTypeDef* hi2c){
+	obj->hi2c=hi2c;
+	obj->address=BMX160_DEFAULT_ADDR;
+}
+
+BMX160_Status bmx160_CheckAlive(BMX160_t* obj){
+	uint8_t value;
+	value = bmx160_read8(obj,BMX160_CHIPID);
+	if(value==BMX160_DEFAULT_CHIPID){
+		return BMX160_OK;
+	}else{
+		return BMX160_ERROR;
+	}
+}

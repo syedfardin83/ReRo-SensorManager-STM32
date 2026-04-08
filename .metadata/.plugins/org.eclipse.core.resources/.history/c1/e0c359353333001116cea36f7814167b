@@ -1,0 +1,9 @@
+#include "stdio.h"
+#include "main.h"
+
+
+//  Sensor object
+typedef struct{
+    I2C_HandleTypeDef *hi2c;
+    uint8_t address;
+} BMX160_t;

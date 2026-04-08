@@ -1,0 +1,16 @@
+#include "stdio.h"
+#include "main.h"
+
+
+//  Sensor object
+typedef struct{
+    I2C_HandleTypeDef *hi2c;
+    uint8_t address;
+} BMX160_t;
+
+typedef enum{
+	BMX160_ERROR=0,
+	BMX160_OK
+} BMX160_Status;
+
+void bmx160_attach(BMX160_t_t*,I2C_HandleTypeDef*);

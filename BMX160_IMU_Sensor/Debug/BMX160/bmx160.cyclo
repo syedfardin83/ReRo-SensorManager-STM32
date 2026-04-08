@@ -1,0 +1,5 @@
+../BMX160/bmx160.c:3:9:bmx160_read8	1
+../BMX160/bmx160.c:18:15:bmx160_write8bit	2
+../BMX160/bmx160.c:29:6:bmx160_attach	1
+../BMX160/bmx160.c:34:6:bmx160_begin	1
+../BMX160/bmx160.c:70:15:bmx160_CheckAlive	2
