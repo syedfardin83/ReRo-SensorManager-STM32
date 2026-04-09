@@ -988,3 +988,375 @@ Finished building: default.size.stdout
  
 Finished building: BMX160_IMU_Sensor.list
  
+16:38:54 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../BMX160/bmx160.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"BMX160/bmx160.d" -MT"BMX160/bmx160.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "BMX160/bmx160.o"
+../BMX160/bmx160.c: In function 'bmx160_GetAllData':
+../BMX160/bmx160.c:97:16: error: 'accel' undeclared (first use in this function); did you mean 'accl'?
+   97 |             if(accel){
+      |                ^~~~~
+      |                accl
+../BMX160/bmx160.c:97:16: note: each undeclared identifier is reported only once for each function it appears in
+../BMX160/bmx160.c:101:37: error: 'BMX160_t' has no member named 'accelRange'; did you mean 'accRange'?
+  101 |                 accel->x = x * obj->accelRange;
+      |                                     ^~~~~~~~~~
+      |                                     accRange
+../BMX160/bmx160.c:102:37: error: 'BMX160_t' has no member named 'accelRange'; did you mean 'accRange'?
+  102 |                 accel->y = y * obj->accelRange;
+      |                                     ^~~~~~~~~~
+      |                                     accRange
+../BMX160/bmx160.c:103:37: error: 'BMX160_t' has no member named 'accelRange'; did you mean 'accRange'?
+  103 |                 accel->z = z * obj->accelRange;
+      |                                     ^~~~~~~~~~
+      |                                     accRange
+make: *** [BMX160/subdir.mk:19: BMX160/bmx160.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j18 all" terminated with exit code 2. Build might be incomplete.
+16:39:15 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../BMX160/bmx160.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"BMX160/bmx160.d" -MT"BMX160/bmx160.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "BMX160/bmx160.o"
+../BMX160/bmx160.c: In function 'bmx160_attach':
+../BMX160/bmx160.c:33:14: error: 'BMX160_t' has no member named 'accRange'; did you mean 'accelRange'?
+   33 |         obj->accRange=BMX160_ACCEL_MG_LSB_2G * 9.8;
+      |              ^~~~~~~~
+      |              accelRange
+../BMX160/bmx160.c: In function 'bmx160_GetAllData':
+../BMX160/bmx160.c:97:16: error: 'accel' undeclared (first use in this function); did you mean 'accl'?
+   97 |             if(accel){
+      |                ^~~~~
+      |                accl
+../BMX160/bmx160.c:97:16: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [BMX160/subdir.mk:19: BMX160/bmx160.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j18 all" terminated with exit code 2. Build might be incomplete.
+16:39:31 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../BMX160/bmx160.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"BMX160/bmx160.d" -MT"BMX160/bmx160.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "BMX160/bmx160.o"
+../BMX160/bmx160.c: In function 'bmx160_attach':
+../BMX160/bmx160.c:33:14: error: 'BMX160_t' has no member named 'accRange'; did you mean 'accelRange'?
+   33 |         obj->accRange=BMX160_ACCEL_MG_LSB_2G * 9.8;
+      |              ^~~~~~~~
+      |              accelRange
+make: *** [BMX160/subdir.mk:19: BMX160/bmx160.o] Error 1
+"make -j18 all" terminated with exit code 2. Build might be incomplete.
+16:39:59 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../BMX160/bmx160.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"BMX160/bmx160.d" -MT"BMX160/bmx160.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "BMX160/bmx160.o"
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28664	    468	   2060	  31192	   79d8	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:41:25 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:120:23: warning: unused variable 'gyro' [-Wunused-variable]
+  120 |   BMX160_SensorData_t gyro;
+      |                       ^~~~
+../Core/Src/main.c:119:23: warning: unused variable 'accel' [-Wunused-variable]
+  119 |   BMX160_SensorData_t accel;
+      |                       ^~~~~
+../Core/Src/main.c:118:23: warning: unused variable 'magn' [-Wunused-variable]
+  118 |   BMX160_SensorData_t magn;
+      |                       ^~~~
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28064	    468	   2060	  30592	   7780	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:45:53 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28664	    468	   2060	  31192	   79d8	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:47:48 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../BMX160/bmx160.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"BMX160/bmx160.d" -MT"BMX160/bmx160.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "BMX160/bmx160.o"
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28616	    468	   2060	  31144	   79a8	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:48:09 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28584	    468	   2060	  31112	   7988	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:50:16 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../BMX160/bmx160.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"BMX160/bmx160.d" -MT"BMX160/bmx160.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "BMX160/bmx160.o"
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28584	    468	   2060	  31112	   7988	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:54:53 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../BMX160/bmx160.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"BMX160/bmx160.d" -MT"BMX160/bmx160.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "BMX160/bmx160.o"
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28584	    468	   2060	  31112	   7988	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:36:15 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:120:23: warning: unused variable 'gyro' [-Wunused-variable]
+  120 |   BMX160_SensorData_t gyro;
+      |                       ^~~~
+../Core/Src/main.c:119:23: warning: unused variable 'accel' [-Wunused-variable]
+  119 |   BMX160_SensorData_t accel;
+      |                       ^~~~~
+../Core/Src/main.c:118:23: warning: unused variable 'magn' [-Wunused-variable]
+  118 |   BMX160_SensorData_t magn;
+      |                       ^~~~
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28064	    468	   2060	  30592	   7780	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:36:58 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:120:23: warning: unused variable 'gyro' [-Wunused-variable]
+  120 |   BMX160_SensorData_t gyro;
+      |                       ^~~~
+../Core/Src/main.c:119:23: warning: unused variable 'accel' [-Wunused-variable]
+  119 |   BMX160_SensorData_t accel;
+      |                       ^~~~~
+../Core/Src/main.c:118:23: warning: unused variable 'magn' [-Wunused-variable]
+  118 |   BMX160_SensorData_t magn;
+      |                       ^~~~
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28064	    468	   2060	  30592	   7780	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:38:32 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:120:23: warning: unused variable 'gyro' [-Wunused-variable]
+  120 |   BMX160_SensorData_t gyro;
+      |                       ^~~~
+../Core/Src/main.c:119:23: warning: unused variable 'accel' [-Wunused-variable]
+  119 |   BMX160_SensorData_t accel;
+      |                       ^~~~~
+../Core/Src/main.c:118:23: warning: unused variable 'magn' [-Wunused-variable]
+  118 |   BMX160_SensorData_t magn;
+      |                       ^~~~
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28064	    468	   2060	  30592	   7780	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:38:52 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:120:23: warning: unused variable 'gyro' [-Wunused-variable]
+  120 |   BMX160_SensorData_t gyro;
+      |                       ^~~~
+../Core/Src/main.c:119:23: warning: unused variable 'accel' [-Wunused-variable]
+  119 |   BMX160_SensorData_t accel;
+      |                       ^~~~~
+../Core/Src/main.c:118:23: warning: unused variable 'magn' [-Wunused-variable]
+  118 |   BMX160_SensorData_t magn;
+      |                       ^~~~
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28072	    468	   2060	  30600	   7788	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:40:12 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../BMX160/bmx160.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"BMX160/bmx160.d" -MT"BMX160/bmx160.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "BMX160/bmx160.o"
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28072	    468	   2060	  30600	   7788	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:41:03 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:120:23: warning: unused variable 'gyro' [-Wunused-variable]
+  120 |   BMX160_SensorData_t gyro;
+      |                       ^~~~
+../Core/Src/main.c:119:23: warning: unused variable 'accel' [-Wunused-variable]
+  119 |   BMX160_SensorData_t accel;
+      |                       ^~~~~
+../Core/Src/main.c:118:23: warning: unused variable 'magn' [-Wunused-variable]
+  118 |   BMX160_SensorData_t magn;
+      |                       ^~~~
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28072	    468	   2060	  30600	   7788	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:46:33 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../BMX160/bmx160.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"BMX160/bmx160.d" -MT"BMX160/bmx160.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "BMX160/bmx160.o"
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28072	    468	   2060	  30600	   7788	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:47:51 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:122:7: warning: unused variable 'data' [-Wunused-variable]
+  122 |   int data;
+      |       ^~~~
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28680	    468	   2060	  31208	   79e8	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:49:49 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28656	    468	   2060	  31184	   79d0	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:52:17 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../BMX160/bmx160.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"BMX160/bmx160.d" -MT"BMX160/bmx160.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "BMX160/bmx160.o"
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28648	    468	   2060	  31176	   79c8	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 
+16:53:31 **** Incremental Build of configuration Debug for project BMX160_IMU_Sensor ****
+make -j18 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "BMX160_IMU_Sensor.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_IMU_Sensor/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_IMU_Sensor.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BMX160_IMU_Sensor.elf
+ 
+arm-none-eabi-size  BMX160_IMU_Sensor.elf 
+arm-none-eabi-objdump -h -S BMX160_IMU_Sensor.elf  > "BMX160_IMU_Sensor.list"
+   text	   data	    bss	    dec	    hex	filename
+  28648	    468	   2060	  31176	   79c8	BMX160_IMU_Sensor.elf
+Finished building: default.size.stdout
+ 
+Finished building: BMX160_IMU_Sensor.list
+ 

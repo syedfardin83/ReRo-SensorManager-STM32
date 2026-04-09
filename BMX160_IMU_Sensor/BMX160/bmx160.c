@@ -5,7 +5,7 @@ uint8_t bmx160_read8(BMX160_t* obj, uint16_t reg)
     uint8_t value;
 //    printf("\nReading at address: %d",obj->address);
     if(HAL_I2C_Mem_Read(obj->hi2c, obj->address<<1,
-                     reg, I2C_MEMADD_SIZE_16BIT,
+                     reg, I2C_MEMADD_SIZE_8BIT,
                      &value, 1, 100)==HAL_OK){
 //    	printf("\nRead Success!");
     }else{
@@ -16,7 +16,7 @@ uint8_t bmx160_read8(BMX160_t* obj, uint16_t reg)
 }
 
 BMX160_Status bmx160_write8bit(BMX160_t* obj,uint16_t reg,uint8_t value){
-	if(HAL_I2C_Mem_Write(obj->hi2c,obj->address<<1,reg,I2C_MEMADD_SIZE_16BIT,&value,1,100)==HAL_OK){
+	if(HAL_I2C_Mem_Write(obj->hi2c,obj->address<<1,reg,I2C_MEMADD_SIZE_8BIT,&value,1,100)==HAL_OK){
 //		printf("\nWrite Success");
 		return BMX160_OK;
 	}else{
@@ -29,6 +29,8 @@ BMX160_Status bmx160_write8bit(BMX160_t* obj,uint16_t reg,uint8_t value){
 void bmx160_attach(BMX160_t* obj,I2C_HandleTypeDef* hi2c){
 	obj->hi2c=hi2c;
 	obj->address=BMX160_DEFAULT_ADDR;
+	obj->gyroRange=BMX160_GYRO_SENSITIVITY_250DPS;
+	obj->accelRange=BMX160_ACCEL_MG_LSB_2G * 9.8;
 }
 
 void bmx160_begin(BMX160_t* obj){
@@ -64,9 +66,47 @@ void bmx160_begin(BMX160_t* obj){
     bmx160_write8bit(obj,BMX160_MAGN_IF_1_ADDR, 0x42);
     bmx160_write8bit(obj,BMX160_MAGN_CONFIG_ADDR, 0x08);
     bmx160_write8bit(obj,BMX160_MAGN_IF_0_ADDR, 0x03);
-    HAL_Delay(50);
+    HAL_Delay(150);
 }
 
+void bmx160_GetAllData(BMX160_t* obj, BMX160_SensorData_t* magn,BMX160_SensorData_t* accel,BMX160_SensorData_t* gyro){
+	uint8_t data[23] = {0};
+	int16_t x=0,y=0,z=0;
+
+	// Read data from registers
+	if(HAL_I2C_Mem_Read(obj->hi2c, obj->address<<1,
+			BMX160_MAG_DATA_ADDR, I2C_MEMADD_SIZE_8BIT,
+            data, 23, 100)==HAL_OK){
+
+		if(magn){
+		        x = (int16_t) (((uint16_t)data[1] << 8) | data[0]);
+		        y = (int16_t) (((uint16_t)data[3] << 8) | data[2]);
+		        z = (int16_t) (((uint16_t)data[5] << 8) | data[4]);
+		        magn->x = x * BMX160_MAGN_UT_LSB;
+		        magn->y = y * BMX160_MAGN_UT_LSB;
+		        magn->z = z * BMX160_MAGN_UT_LSB;
+		    }
+	    if(gyro){
+	        x = (int16_t) (((uint16_t)data[9] << 8) | data[8]);
+	        y = (int16_t) (((uint16_t)data[11] << 8) | data[10]);
+	        z = (int16_t) (((uint16_t)data[13] << 8) | data[12]);
+	        gyro->x = x * obj->gyroRange;
+	        gyro->y = y * obj->gyroRange;
+	        gyro->z = z * obj->gyroRange;
+//	        printf("\n%d",x);
+
+	    }
+	    if(accel){
+	        x = (int16_t) (((uint16_t)data[15] << 8) | data[14]);
+	        y = (int16_t) (((uint16_t)data[17] << 8) | data[16]);
+	        z = (int16_t) (((uint16_t)data[19] << 8) | data[18]);
+	        accel->x = x * obj->accelRange;
+	        accel->y = y * obj->accelRange;
+	        accel->z = z * obj->accelRange;
+	    }
+
+	}
+}
 BMX160_Status bmx160_CheckAlive(BMX160_t* obj){
 	uint8_t value;
 	value = bmx160_read8(obj,BMX160_CHIPID);

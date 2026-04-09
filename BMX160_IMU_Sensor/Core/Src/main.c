@@ -114,6 +114,11 @@ int main(void)
   bmx160_begin(&sensor);
   HAL_Delay(100);
   printf("\nSensor initialized!");
+
+  BMX160_SensorData_t magn;
+  BMX160_SensorData_t accel;
+  BMX160_SensorData_t gyro;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -132,7 +137,16 @@ int main(void)
 
 //	  printf("\nSensor initialized!");
 
+//	  printf("\nReading data...");
+	  bmx160_GetAllData(&sensor,&magn,&accel,&gyro);
 
+//	  printf("\nAccel Data: %f %f %f",accel.x,accel.y,accel.z);
+	  printf("\nGyro Data: %f %f %f",gyro.x,gyro.y,gyro.z);
+
+	  HAL_Delay(50);
+
+//	  data = bmx160_read8(&sensor,0x10);
+//	  printf("\nReg Gyro z: %d",data);
 
     /* USER CODE BEGIN 3 */
   }
