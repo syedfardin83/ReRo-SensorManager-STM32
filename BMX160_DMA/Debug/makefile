@@ -14,7 +14,6 @@ RM := rm -rf
 -include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
--include Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include BMX160/subdir.mk
@@ -67,7 +66,7 @@ main-build: BMX160_DMA.elf secondary-outputs
 
 # Tool invocations
 BMX160_DMA.elf BMX160_DMA.map: $(OBJS) $(USER_OBJS) /home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_DMA/STM32F410RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "BMX160_DMA.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_DMA/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_DMA.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "BMX160_DMA.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_DMA/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_DMA.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

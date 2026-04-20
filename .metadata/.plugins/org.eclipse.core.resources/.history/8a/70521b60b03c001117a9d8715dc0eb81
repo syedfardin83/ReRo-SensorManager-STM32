@@ -61,13 +61,10 @@ const osSemaphoreAttr_t sem1_attributes = {
   .name = "sem1"
 };
 /* USER CODE BEGIN PV */
-uint8_t buffer[n_buffers][23];
+uint8_t buffer[n][23];
 uint8_t stat;
 
-uint8_t dma_read_next=0, pos=0;
-
-int16_t x,y,z;
-float accx,accy,accz;
+uint8_t dma_read_next=0, calculate_next=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -94,6 +91,7 @@ int _write(int file, char *ptr, int len){
 }
 
 void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c) {
+	printf("\nInterrupt!");
     if (hi2c->Instance == I2C1) {
     	printf("\nReading through DMA complete!");
 //    	HAL_I2C_Mem_Read_DMA(&hi2c1,BMX160_DEFAULT_ADDR<<1,0x12,I2C_MEMADD_SIZE_8BIT,buffer,6);
@@ -103,15 +101,7 @@ void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c) {
 //    	dma_read_next = (dma_read_next==n_buffers-1)?0:dma_read_next+1;
 //    	HAL_I2C_Mem_Read_DMA(&hi2c1, MPU6050_ADDR << 1, REG_ACCEL_XOUT_H,
 //    	                             1, buffer[dma_read_next], 14);
-    }else{
-    	printf("\nInterrupt! I2C id: ");
-
     }
-    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_10);
-        	osSemaphoreRelease(sem1Handle);
-        	dma_read_next = (dma_read_next==n_buffers-1)?0:dma_read_next+1;
-        	HAL_I2C_Mem_Read_DMA(&hi2c1,BMX160_DEFAULT_ADDR<<1,BMX160_MAG_DATA_ADDR,I2C_MEMADD_SIZE_8BIT,buffer[dma_read_next],23);
-
 }
 
 /* USER CODE END 0 */
@@ -397,7 +387,7 @@ void calculate(void *argument)
 	osDelay(20);
 	HAL_StatusTypeDef result;
 	printf("\nStarting DMA...");
-	result=HAL_I2C_Mem_Read_DMA(&hi2c1,BMX160_DEFAULT_ADDR<<1,BMX160_MAG_DATA_ADDR,I2C_MEMADD_SIZE_8BIT,buffer[dma_read_next],23);
+	result=HAL_I2C_Mem_Read_DMA(&hi2c1,BMX160_DEFAULT_ADDR<<1,BMX160_MAG_DATA_ADDR,I2C_MEMADD_SIZE_8BIT,buffer,23);
 	if(result==HAL_OK){
 		printf("\nDMA hit...");
 	}else{
@@ -431,19 +421,6 @@ void calculate(void *argument)
 //	}
 //	osDelay(100);
 	 // printf("\nWorking...");
-
-	  if(osSemaphoreAcquire(sem1Handle,osWaitForever)==osOK){
-		  x = (int16_t) (((uint16_t)buffer[pos][1] << 8) | buffer[pos][0]);
-		  y = (int16_t) (((uint16_t)buffer[pos][3] << 8) | buffer[pos][2]);
-		  z = (int16_t) (((uint16_t)buffer[pos][5] << 8) | buffer[pos][4]);
-		  accx = x * BMX160_MAGN_UT_LSB;
-		  accy = y * BMX160_MAGN_UT_LSB;
-		  accz = z * BMX160_MAGN_UT_LSB;
-
-		  printf("%f %f %f",accx,accy,accz);
-
-		  pos=(pos==n_buffers-1)?0:pos+1;
-	  }
 
 
     osDelay(1);
