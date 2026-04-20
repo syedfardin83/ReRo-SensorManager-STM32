@@ -22,7 +22,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "stdio.h"
+#include "bmx160.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,6 +44,7 @@
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
 DMA_HandleTypeDef hdma_i2c1_rx;
+DMA_HandleTypeDef hdma_i2c1_tx;
 
 UART_HandleTypeDef huart2;
 
@@ -53,8 +55,14 @@ const osThreadAttr_t calculateTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for sem1 */
+osSemaphoreId_t sem1Handle;
+const osSemaphoreAttr_t sem1_attributes = {
+  .name = "sem1"
+};
 /* USER CODE BEGIN PV */
-
+uint8_t buffer[23];
+uint8_t stat;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -79,6 +87,21 @@ int _write(int file, char *ptr, int len){
 	else
 		return -1;
 }
+
+void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c) {
+	printf("\nInterrupt!");
+    if (hi2c->Instance == I2C1) {
+    	printf("\nReading through DMA complete!");
+//    	HAL_I2C_Mem_Read_DMA(&hi2c1,BMX160_DEFAULT_ADDR<<1,0x12,I2C_MEMADD_SIZE_8BIT,buffer,6);
+
+//    	HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_10);
+//    	osSemaphoreRelease(sem1Handle);
+//    	dma_read_next = (dma_read_next==n_buffers-1)?0:dma_read_next+1;
+//    	HAL_I2C_Mem_Read_DMA(&hi2c1, MPU6050_ADDR << 1, REG_ACCEL_XOUT_H,
+//    	                             1, buffer[dma_read_next], 14);
+    }
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -114,7 +137,7 @@ int main(void)
   MX_I2C1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  printf("\nCode Started!!\n");
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -123,6 +146,10 @@ int main(void)
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
+
+  /* Create the semaphores(s) */
+  /* creation of sem1 */
+  sem1Handle = osSemaphoreNew(1, 0, &sem1_attributes);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
@@ -288,9 +315,12 @@ static void MX_DMA_Init(void)
   __HAL_RCC_DMA1_CLK_ENABLE();
 
   /* DMA interrupt init */
-  /* DMA1_Stream0_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 5, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
+  /* DMA1_Stream1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
+  /* DMA1_Stream5_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
 
 }
 
@@ -347,9 +377,50 @@ static void MX_GPIO_Init(void)
 void calculate(void *argument)
 {
   /* USER CODE BEGIN 5 */
+
+//	BMX160_t sensor;
+//	bmx160_attach(&sensor,&hi2c1);
+//	bmx160_begin(&sensor);
+
+	osDelay(20);
+	HAL_StatusTypeDef result;
+	printf("\nStarting DMA...");
+	result=HAL_I2C_Mem_Read_DMA(&hi2c1,BMX160_DEFAULT_ADDR<<1,BMX160_MAG_DATA_ADDR,I2C_MEMADD_SIZE_8BIT,buffer,23);
+	if(result==HAL_OK){
+		printf("\nDMA hit...");
+	}else{
+		printf("\nError firing DMA! code: %d",result);
+		printf("\nState: %d\n", HAL_I2C_GetState(&hi2c1));
+	}
+
   /* Infinite loop */
   for(;;)
   {
+//	printf("\nHello worldd;;");
+//	osDelay(100);
+
+//	  if(bmx160_CheckAlive(&sensor)==BMX160_OK){
+//		  printf("\nSensor found!");
+//	  }else{
+//		  printf("Error finding sesnor!");
+//	  }
+//	  osDelay(100);
+
+
+//	HAL_StatusTypeDef result;
+//	printf("\nStarting DMA...");
+////	result=HAL_I2C_Mem_Read_DMA(&hi2c1,BMX160_DEFAULT_ADDR<<1,0x12,I2C_MEMADD_SIZE_8BIT,buffer,6);
+//	result=HAL_I2C_Mem_Read_DMA(&hi2c1,BMX160_DEFAULT_ADDR<<1,BMX160_CHIPID,I2C_MEMADD_SIZE_8BIT,&stat,1);
+//
+//	if(result==HAL_OK){
+//		printf("\nDMA hit...");
+//	}else{
+//		printf("\nError firing DMA! code: %d",result);
+//	}
+//	osDelay(100);
+	 // printf("\nWorking...");
+
+
     osDelay(1);
   }
   /* USER CODE END 5 */
