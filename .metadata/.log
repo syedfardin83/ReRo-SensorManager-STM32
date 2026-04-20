@@ -185,3 +185,34 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-04-09 16:52:21.452
 !MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-04-09 16:59:41.424
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 29 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-04-09 16:59:41.424
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-04-09 16:59:41.425
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 29 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2026-04-09 16:59:41.425
+!MESSAGE Existing sessions are:
+!SESSION 2026-04-20 15:33:31.698 -----------------------------------------------
+eclipse.buildId=Version 2.1.0
+java.version=21.0.9
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  /home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_DMA/.project
+Command-line arguments:  -os linux -ws gtk -arch x86_64 /home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_DMA/.project
+
+!ENTRY org.eclipse.core.resources 2 10035 2026-04-20 15:33:48.749
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-04-20 15:33:50.732
+!MESSAGE Log4j2 initialized with config file /home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-04-20 15:33:54.513
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-20 15:33:56.875
+!MESSAGE Indexed 'BMX160_DMA' (36 sources, 150 headers) in 2.33 sec: 16,678 declarations; 83,555 references; 7 unresolved inclusions; 1,290 syntax errors; 1,534 unresolved names (1.5%)
