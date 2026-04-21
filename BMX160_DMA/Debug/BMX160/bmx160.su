@@ -3,4 +3,4 @@
 ../BMX160/bmx160.c:29:6:bmx160_attach	16	static
 ../BMX160/bmx160.c:36:6:bmx160_begin	16	static
 ../BMX160/bmx160.c:72:6:bmx160_GetAllData	72	static
-../BMX160/bmx160.c:110:15:bmx160_CheckAlive	24	static
+../BMX160/bmx160.c:111:15:bmx160_CheckAlive	24	static

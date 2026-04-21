@@ -1,4 +1,4 @@
-17:34:24 **** Incremental Build of configuration Debug for project BMX160_DMA ****
+16:59:36 **** Incremental Build of configuration Debug for project BMX160_DMA ****
 make -j18 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F410Rx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../BMX160 -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "BMX160_DMA.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/fardin/Desktop/Coding/ReRo-SensorManager-STM32/BMX160_DMA/STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BMX160_DMA.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -7,11 +7,11 @@ Finished building target: BMX160_DMA.elf
 arm-none-eabi-size  BMX160_DMA.elf 
 arm-none-eabi-objdump -h -S BMX160_DMA.elf  > "BMX160_DMA.list"
    text	   data	    bss	    dec	    hex	filename
-  51740	    472	  21192	  73404	  11ebc	BMX160_DMA.elf
+  52916	    472	  21224	  74612	  12374	BMX160_DMA.elf
 Finished building: default.size.stdout
  
 Finished building: BMX160_DMA.list
  
 
-17:34:25 Build Finished. 0 errors, 0 warnings. (took 288ms)
+16:59:36 Build Finished. 0 errors, 0 warnings. (took 287ms)
 

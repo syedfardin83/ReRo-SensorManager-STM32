@@ -82,6 +82,7 @@ void bmx160_GetAllData(BMX160_t* obj, BMX160_SensorData_t* magn,BMX160_SensorDat
 		        x = (int16_t) (((uint16_t)data[1] << 8) | data[0]);
 		        y = (int16_t) (((uint16_t)data[3] << 8) | data[2]);
 		        z = (int16_t) (((uint16_t)data[5] << 8) | data[4]);
+//		        printf("\n%d",z);
 		        magn->x = x * BMX160_MAGN_UT_LSB;
 		        magn->y = y * BMX160_MAGN_UT_LSB;
 		        magn->z = z * BMX160_MAGN_UT_LSB;
